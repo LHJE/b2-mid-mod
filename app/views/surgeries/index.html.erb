@@ -1,0 +1,13 @@
+<h1>All Surgeries</h1>
+
+<% @surgeries.each do |surgery| %>
+  <section id ="surgery-<%= surgery.id %>">
+    <h2> <%= surgery.title %></h2>
+    <h4> Doctors:</h4>
+    <% @doctor_surgeries.each do |doctor_surgery| %>
+      <% if surgery.id == doctor_surgery.surgery_id %>
+        <p><%= Doctor.where(id: doctor_surgery.doctor_id).pluck(:name).reduce %></p>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>
