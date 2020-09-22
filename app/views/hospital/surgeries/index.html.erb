@@ -1,0 +1,7 @@
+<h1>All Surgeries</h1>
+
+<% @surgeries.each do |surgery| %>
+  <section id ="surgery-<%= surgery.id %>">
+    <h2> <%= link_to surgery.title, "surgeries/#{surgery.id}" %></h2>
+  </section>
+<% end %>
