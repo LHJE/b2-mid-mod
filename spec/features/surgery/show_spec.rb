@@ -64,8 +64,11 @@ RSpec.describe 'Surgery Index' do
     end
 
     it "I can see other surgeries happening that same day" do
-      expect(page).to have_link(@surgery_4)
-      expect(page).to have_link(@surgery_8)
+      visit "/surgeries/#{@surgery_1.id}"
+
+      expect(page).to have_link(@surgery_4.title)
+      expect(page).to have_link(@surgery_8.title)
+      expect(page).to_not have_link(@surgery_7.title)
     end
   end
 end
