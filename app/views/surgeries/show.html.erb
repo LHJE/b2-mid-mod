@@ -15,7 +15,7 @@
 <% end %>
 
 <h2>Add A Doctor to this Surgery:</h2>
-<%= form_tag '/doctor_surgeries' do %>
+<%= form_tag "/doctor_surgeries/#{@surgery.id}" do %>
   <%= label_tag :name %>
   <%= text_field_tag :name %>
 
