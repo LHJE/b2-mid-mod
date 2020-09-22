@@ -1,8 +1,13 @@
 <h1><%= @surgery.title %> on <%= @surgery.day %></h1>
 
-<h3>Operating Room: <%= @surgery.operating_room_number %>/h3>
+<h2>Operating Room: <%= @surgery.operating_room_number %>/h3>
 
-<h4>Other Surgeries Happening The Same Day:</h4>
+<h4> Doctors: </h4>
+<% @doctor_surgeries.each do |doctor_surgery| %>
+    <p><%= Doctor.where(id: doctor_surgery.doctor_id).pluck(:name).reduce %></p>
+<% end %>
+
+<h4>Other surgeries happening this day of the week:</h4>
 <p> <%= @other_surgeries.each do |other_surgery| %> </p>
   <section id ="surgery-<%= other_surgery.id %>">
     <h2> <%= link_to other_surgery.title, "surgeries/#{other_surgery.id}" %></h2>
