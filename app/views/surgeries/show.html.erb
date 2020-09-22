@@ -3,8 +3,9 @@
 <h2>Operating Room: <%= @surgery.operating_room_number %></h3>
 
 <h3> Doctors: </h3>
-<%= Doctor.where(id: DoctorSurgery.where(surgery_id: @surgery.id).pluck(:doctor_id)).pluck(:name) %>
-
+<% @doctors.each do |doctor| %>
+  <p><%= doctor %></p>
+<% end %>
 
 <h4>Other surgeries happening this day of the week:</h4>
 <p> <% @other_surgeries.each do |other_surgery| %> </p>
