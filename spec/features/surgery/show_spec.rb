@@ -5,13 +5,13 @@ RSpec.describe 'Surgery Index' do
   describe 'As a visitor ' do
     before :each do
       @surgery_1 = Surgery.create!(title: "Lungs", day: "Monday", operating_room_number: 1)
+      @surgery_4 = Surgery.create!(title: "Arms", day: "Monday", operating_room_number: 4)
+      @surgery_8 = Surgery.create!(title: "Hands", day: "Monday", operating_room_number: 8)
       @surgery_2 = Surgery.create!(title: "Heart", day: "Tuesday", operating_room_number: 2)
       @surgery_3 = Surgery.create!(title: "Legs", day: "Thusday", operating_room_number: 3)
-      @surgery_4 = Surgery.create!(title: "Arms", day: "Wednesday", operating_room_number: 4)
       @surgery_5 = Surgery.create!(title: "Head", day: "Friday", operating_room_number: 5)
       @surgery_6 = Surgery.create!(title: "Chest", day: "Saturday", operating_room_number: 6)
       @surgery_7 = Surgery.create!(title: "Feet", day: "Sunday", operating_room_number: 7)
-      @surgery_8 = Surgery.create!(title: "Hands", day: "Monday", operating_room_number: 8)
 
       @hospital_1 = Hospital.create!(name: "Big one")
       @hospital_2 = Hospital.create!(name: "Local one")
@@ -61,6 +61,11 @@ RSpec.describe 'Surgery Index' do
 
       expect(page).to have_content(@surgery_1.title)
       expect(page).to have_content(@surgery_1.operating_room_number)
+    end
+
+    it "I can see other surgeries happening that same day" do
+      expect(page).to have_link(@surgery_4)
+      expect(page).to have_link(@surgery_8)
     end
   end
 end
