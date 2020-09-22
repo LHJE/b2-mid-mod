@@ -6,7 +6,7 @@ class SurgeriesController < ApplicationController
 
   def show
     @surgery = Surgery.find(params[:id])
-    @doctor_surgeries = DoctorSurgery.all
+    @other_surgeries = Surgery.where(day: @surgery.day)
   end
 
 end
