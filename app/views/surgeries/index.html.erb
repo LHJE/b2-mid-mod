@@ -4,10 +4,6 @@
   <section id ="surgery-<%= surgery.id %>">
     <h2> <%= link_to surgery.title, "surgeries/#{surgery.id}" %></h2>
     <h4> Doctors: </h4>
-    <% @doctor_surgeries.each do |doctor_surgery| %>
-      <% if surgery.id == doctor_surgery.surgery_id %>
-        <p><%= Doctor.where(id: doctor_surgery.doctor_id).pluck(:name).reduce %></p>
-      <% end %>
-    <% end %>
+    <%= Doctor.where(id: DoctorSurgery.where(surgery_id: surgery.id).pluck(:doctor_id)).pluck(:name) %>
   </section>
 <% end %>
