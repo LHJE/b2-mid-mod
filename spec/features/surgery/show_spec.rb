@@ -82,6 +82,16 @@ RSpec.describe 'Surgery Index' do
       it "I can see a field with instructions to Add A Doctor To This Surgery" do
         expect(page).to have_button("Add Doctor")
       end
+
+      it "I can click Add Doctor and it adds a doctor to the surgery" do
+        fill_in 'Name', with: @doctor_2.name
+
+        click_button "Add Doctor"
+
+        expect(current_path).to eq("/surgeries/#{@surgery_1.id}")
+
+        expect(page).to have_content(@doctor_2.name)
+      end
     end
   end
 end
