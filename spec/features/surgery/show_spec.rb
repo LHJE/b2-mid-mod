@@ -118,6 +118,16 @@ RSpec.describe 'Surgery Index' do
 
         expect(page).to have_content(@doctor_2.name)
       end
+
+      it "I can click Add Doctor and it does not add a doctor from a different hospital" do
+        fill_in 'Name', with: @doctor_5.name
+
+        click_button "Add Doctor"
+
+        expect(current_path).to eq("/surgeries/#{@surgery_1.id}")
+
+        expect(page).to_not have_content(@doctor_5.name)
+      end
     end
   end
 end
