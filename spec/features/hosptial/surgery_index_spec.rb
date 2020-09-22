@@ -72,5 +72,16 @@ RSpec.describe 'Hospital Surgery Index' do
 
       visit "hospitals/#{@hospital_1.id}/surgeries"
     end
+
+    it "I can see the titles of all surgeries associated with this hospital" do
+      expect(page).to have_content(@surgery_1.title)
+      expect(page).to have_content(@surgery_2.title)
+      expect(page).to have_content(@surgery_3.title)
+      expect(page).to have_content(@surgery_4.title)
+      expect(page).to have_content(@surgery_5.title)
+      expect(page).to have_content(@surgery_6.title)
+      expect(page).to have_content(@surgery_7.title)
+      expect(page).to have_content(@surgery_8.title)
+    end
   end
 end
