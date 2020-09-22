@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get '/surgeries', to: 'surgeries#index'
   get '/surgeries/:id', to: 'surgeries#show'
+  get 'hospitals/:id/surgeries/', to: 'hospital/surgeries#index'
   post "/doctor_surgeries/:id", to: "doctor_surgeries#update"
+
 end
