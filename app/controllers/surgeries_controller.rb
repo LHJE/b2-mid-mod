@@ -1,0 +1,4 @@
+class SurgeriesController < ApplicationController
+
+
+end
