@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_152521) do
+ActiveRecord::Schema.define(version: 2020_09_22_170900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 2020_09_22_152521) do
     t.string "operating_room_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "hospital_id"
+    t.index ["hospital_id"], name: "index_surgeries_on_hospital_id"
   end
 
   add_foreign_key "doctor_surgeries", "doctors"
   add_foreign_key "doctor_surgeries", "surgeries"
   add_foreign_key "doctors", "hospitals"
+  add_foreign_key "surgeries", "hospitals"
 end
