@@ -127,6 +127,7 @@ RSpec.describe 'Surgery Index' do
         expect(current_path).to eq("/surgeries/#{@surgery_1.id}")
 
         expect(page).to_not have_content(@doctor_5.name)
+        
       end
     end
   end

@@ -89,7 +89,7 @@ RSpec.describe 'Surgery Index' do
         expect(page).to have_content(@doctor_3.name)
         expect(page).to have_content(@doctor_4.name)
       end
-
+    
       within "#surgery-#{@surgery_6.id}" do
         expect(page).to have_content(@doctor_2.name)
         expect(page).to_not have_content(@doctor_1.name)
