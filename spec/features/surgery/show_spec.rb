@@ -52,7 +52,7 @@ RSpec.describe 'Surgery Index' do
       @doctor_surgery_15 = DoctorSurgery.create!(surgery_id: @surgery_8.id, doctor_id: @doctor_2.id)
       @doctor_surgery_16 = DoctorSurgery.create!(surgery_id: @surgery_8.id, doctor_id: @doctor_4.id)
 
-      @doctor_surgery_16 = DoctorSurgery.create!(surgery_id: @surgery_9.id, doctor_id: @doctor_5.id)
+      @doctor_surgery_17 = DoctorSurgery.create!(surgery_id: @surgery_9.id, doctor_id: @doctor_5.id)
       @doctor_surgery_18 = DoctorSurgery.create!(surgery_id: @surgery_9.id, doctor_id: @doctor_6.id)
       @doctor_surgery_19 = DoctorSurgery.create!(surgery_id: @surgery_9.id, doctor_id: @doctor_7.id)
       @doctor_surgery_20 = DoctorSurgery.create!(surgery_id: @surgery_10.id, doctor_id: @doctor_5.id)
