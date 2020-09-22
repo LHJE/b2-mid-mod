@@ -70,5 +70,16 @@ RSpec.describe 'Surgery Index' do
       expect(page).to have_link(@surgery_8.title)
       expect(page).to_not have_link(@surgery_7.title)
     end
+
+    it "I can see the doctors for this surgery" do
+      visit "/surgeries/#{@surgery_1.id}"
+
+      expect(page).to have_content(@doctor_1.name)
+      expect(page).to have_content(@doctor_4.name)
+      expect(page).to have_content(@doctor_3.name)
+      expect(page).to_not have_content(@doctor_2.name)
+    end
+
+    
   end
 end
