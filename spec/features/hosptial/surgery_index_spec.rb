@@ -16,7 +16,7 @@ RSpec.describe 'Hospital Surgery Index' do
       @surgery_6 = Surgery.create!(title: "Chest", day: "Saturday", operating_room_number: 6, hospital_id: @hospital_1.id)
       @surgery_7 = Surgery.create!(title: "Feet", day: "Sunday", operating_room_number: 7, hospital_id: @hospital_1.id)
 
-      @surgery_9 = Surgery.create!(title: "Lungs", day: "Wednesday", operating_room_number: 1, hospital_id: @hospital_2.id)
+      @surgery_9 = Surgery.create!(title: "Tendons", day: "Wednesday", operating_room_number: 1, hospital_id: @hospital_2.id)
       @surgery_10 = Surgery.create!(title: "Arms", day: "Wednesday", operating_room_number: 4, hospital_id: @hospital_2.id)
       @surgery_11 = Surgery.create!(title: "Hands", day: "Wednesday", operating_room_number: 8, hospital_id: @hospital_2.id)
       @surgery_12 = Surgery.create!(title: "Heart", day: "Tuesday", operating_room_number: 2, hospital_id: @hospital_2.id)
@@ -82,6 +82,7 @@ RSpec.describe 'Hospital Surgery Index' do
       expect(page).to have_content(@surgery_6.title)
       expect(page).to have_content(@surgery_7.title)
       expect(page).to have_content(@surgery_8.title)
+      expect(page).to_not have_content(@surgery_9.title)
     end
   end
 end
