@@ -56,30 +56,32 @@ RSpec.describe 'Surgery Index' do
       expect(current_path).to eq("/surgeries/#{@surgery_1.id}")
     end
 
-    it "I can see the title and operating room number of that surgery" do
-      visit "/surgeries/#{@surgery_1.id}"
+    describe 'As a visitor on the show page' do
+      before :each do
+        visit "/surgeries/#{@surgery_1.id}"
+      end
 
-      expect(page).to have_content(@surgery_1.title)
-      expect(page).to have_content(@surgery_1.operating_room_number)
+      it "I can see the title and operating room number of that surgery" do
+        expect(page).to have_content(@surgery_1.title)
+        expect(page).to have_content(@surgery_1.operating_room_number)
+      end
+
+      it "I can see other surgeries happening that same day" do
+        expect(page).to have_link(@surgery_4.title)
+        expect(page).to have_link(@surgery_8.title)
+        expect(page).to_not have_link(@surgery_7.title)
+      end
+
+      it "I can see the doctors for this surgery" do
+        expect(page).to have_content(@doctor_1.name)
+        expect(page).to have_content(@doctor_4.name)
+        expect(page).to have_content(@doctor_3.name)
+        expect(page).to_not have_content(@doctor_2.name)
+      end
+
+      it "I can see a field with instructions to Add A Doctor To This Surgery" do
+        expect(page).to have_button("Add Doctor")
+      end
     end
-
-    it "I can see other surgeries happening that same day" do
-      visit "/surgeries/#{@surgery_1.id}"
-
-      expect(page).to have_link(@surgery_4.title)
-      expect(page).to have_link(@surgery_8.title)
-      expect(page).to_not have_link(@surgery_7.title)
-    end
-
-    it "I can see the doctors for this surgery" do
-      visit "/surgeries/#{@surgery_1.id}"
-
-      expect(page).to have_content(@doctor_1.name)
-      expect(page).to have_content(@doctor_4.name)
-      expect(page).to have_content(@doctor_3.name)
-      expect(page).to_not have_content(@doctor_2.name)
-    end
-
-    
   end
 end
